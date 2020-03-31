@@ -10,9 +10,9 @@
 	
 	<script>
 	     
-$(document).ready(function(){
- $('#load_data').click();
- $('.panel-collapse').on('show.bs.collapse', function () {
+  $(document).ready(function(){
+  $('#load_data').click();
+  $('.panel-collapse').on('show.bs.collapse', function () {
     $(this).siblings('.panel-heading').addClass('active');
   });
 
@@ -36,6 +36,10 @@ $(document).ready(function(){
   imgObj6.src = "Stock_Closing.jpeg";
   var imgObj7 = document.getElementById('Total_confirmed'); 
   imgObj7.src = "Total_Confirmed_cases.jpeg";
+  var imgObj8 = document.getElementById('India_confirmed'); 
+  imgObj8.src = "Confirmed_Cases.jpg";
+  var imgObj9 = document.getElementById('India_image'); 
+  imgObj9.src = "india_cases.jpg";
   $.ajax({
    url:"DataDetails.csv",
    dataType:"text",
@@ -115,13 +119,14 @@ function showactivities() {
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 6vh;
+  padding-top: 22vh;
   left: 0;
-  top: 25vh;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: black;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
@@ -130,52 +135,49 @@ function showactivities() {
   background-color: #fefefe;
   margin: auto;
   padding: 0;
-  width: 90%;
-  max-width: 1200px;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
 }
 
 /* The Close Button */
 .close {
   color: white;
-  position: absolute;
-  top: 10px;
-  right: 25px;
-  font-size: 35px;
+  float: right;
+  font-size: 28px;
   font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: #999;
+  color: #000;
   text-decoration: none;
   cursor: pointer;
 }
 
-.mySlides {
-  display: none;
-}
-
-.cursor {
-  cursor: pointer;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
+.modal-header {
+  padding: 2px 16px;
+  background-color: gray
   color: white;
-  font-weight: bold;
-  font-size: 20px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
 }
+
+.modal-body {padding: 2px 16px;}
+
 
 /* Position the "next button" to the right */
 .next {
@@ -514,13 +516,30 @@ table{
 	 <div class="panel panel-default">
       <div class="panel-heading active">
         <h4 class="panel-title">
-          <a data-toggle="collapse" href="#collapse1">Confirmed cases</a>
+          <a data-toggle="collapse" href="#collapse1">Total cases</a>
         </h4>
       </div>
       <div id="collapse1" class="panel-collapse collapse in">
         <div class="panel-body">
-		<p><img id="Total_confirmed" src = "Total_Confirmed_cases.jpeg" width="85%"/></p>
+		<p><img id="Total_confirmed" src = "Total_Confirmed_cases.jpg" width="85%"/></p>
 		<p>Graph Of Total Confirmed Cases</p>
+		
+		<p><img id="India_confirmed" src = "Confirmed_Cases.jpg" width="85%"/></p>
+		<p>Graph Of Confirmed Cases in India <a href="#" role="button" id="Pooja">View More</a></p>
+		</div>
+		</div>
+		</div>
+		
+		<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse6">Covid19 Pandemic: A review from Indian perspective </a>
+        </h4>
+      </div>
+      <div id="collapse6" class="panel-collapse collapse">
+        <div class="panel-body">
+		<p><img id="India_image" src = "india_cases.jpeg" width="85%"/></p>
+		<p>Image: India Corona Virus Affected<a href="#" role="button" id="Moumita">View More</a></p>
 		</div>
 		</div>
 		</div>
@@ -587,13 +606,15 @@ table{
 	   <h4>Here using Semiparametric Regression we are fitting country specific curves & studying differences between country specific changepoints.</h4>
 	   <h5>By Santu</h5>
 
-	   <h3>Foreign Traffic & asymptotic/symptotic infection</h3>
+	   <h3>Covid-19 Pandemic: A review from Indian perspective</h3><!-- Trigger/Open The Modal -->
+        <a href="#" role="button" id="Moumita">View More</a>
 	   <h4>Working upon  the SIR fitted by UMICH group by including foreign traffic & asymptotic/symptotic infection Getting data from national level & may   be a network models for state</h4>
-	   <h5>By Moumita</h5>
+	   <h5>By Moumita Chatterjee</h5>
 	   
 	   <h3>India Dashboard</h3>
+	   <a href="#" role="button" id="Pooja">View More</a>
 	   <h4>Summarization of India & various state data.</h4>
-	   <h5>By Pooja</h5>
+	   <h5>By Pooja Sengupta</h5>
 	   
 	   <h3>Getting forecast for India</h3>
 	   <h4>Here we are adding country specific covariates & then using Bayesian structural time series model to get forecast for India</h4>
@@ -610,15 +631,79 @@ table{
          </div>
        </div>
       </div>
-
-
-	   
-	   
-	   
-	   
 	   
 	  </div>
 	  </div>
+	  
+	  <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+      <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>COVID 19 Details</h2>
+      </div>
+      <div class="modal-body">
+      <iframe id="myIframeMoumita" src="COVID19_Indian Perspective.pdf" width="100%";>
+      </iframe>
+	  <iframe id="myIframePooja" src="COVID19_India Details.pdf" width="100%";>
+      </iframe>
+      </div>
+      </div>
+      <script>
+    
+</script>
+<script>
+   var iframe = document.getElementById("myIframeMoumita");
+   var iframe1 = document.getElementById("myIframePooja");
+    // Adjusting the iframe height onload event
+    iframe.onload = function(){
+        iframe.style.height = (screen.height*3/5) + 'px';
+    }
+	iframe1.onload = function(){
+        iframe1.style.height = (screen.height*3/5) + 'px';
+    }
+	
+// Get the modal
+var modal = document.getElementById("myModal");
+// Get the button that opens the modal
+var btn = document.getElementById("Moumita");
+var btn1 = document.getElementById("Pooja");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    
+    modal.style.display = "block";
+	iframe.style.display="block"
+	iframe1.style.display="none"
+    // Selecting the iframe element
+    
+}
+btn1.onclick = function() {
+    
+    modal.style.display = "block";
+	iframe1.style.display="block"
+	iframe.style.display="none"
+    // Selecting the iframe element
+    
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+      </div>
+	  
 	  </div>
     <footer>
       <div class="row" id="section-3">
@@ -641,7 +726,7 @@ table{
 	   <td style="border:0px;margin:0px;padding:0px;">
 	   <div class="footer-copyright">
         <div class="container" align="right">
-          By Team 
+          Developed & Maintained By Chatterjee, S 
         </div>
 	   </div>
 	   </td>
