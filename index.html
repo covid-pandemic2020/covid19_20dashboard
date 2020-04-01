@@ -12,6 +12,18 @@
 	     
   $(document).ready(function(){
   $('#load_data').click();
+  var mob = document.getElementById('mob_info');
+  var lappy= document.getElementById('lappy_info');
+  if(screen.width > 1000)
+  { 
+     mob.style.display="none";
+	 lappy.style.display="block";
+    
+  }
+  else{
+     mob.style.display="block";
+	 lappy.style.display="none";
+  }
   $('.panel-collapse').on('show.bs.collapse', function () {
     $(this).siblings('.panel-heading').addClass('active');
   });
@@ -480,7 +492,7 @@ table{
     </div>
 	<table style="margin:0px;padding:4%">
 	<tr><td>
-    <div class="row" style="width:100%;padding-right:4%;padding-left:4%">
+    <div id="lappy_info" class="row" style="width:100%;padding-right:4%;padding-left:4%">
       <div class="col-3" style="width:33%">
         
         <p>The 2019–2020 coronavirus pandemic is an ongoing pandemic of coronavirus disease 2019 (COVID-19), caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2).The outbreak was first identified in Wuhan, Hubei, China, in December 2019, and was recognized as a pandemic by the World Health Organization (WHO) on 11 March 2020. As of 27 March, more than 550,000 cases of COVID-19 have been reported in over 200 countries and territories, resulting in approximately 24,800 deaths and more than 129,000 recoveries.</p>
@@ -494,6 +506,15 @@ table{
         <p>Common symptoms include fever, cough, and shortness of breath.Complications may include pneumonia and acute respiratory distress syndrome.There is no known vaccine or specific antiviral treatment.Primary treatment is symptomatic and supportive therapy.Recommended preventive measures include hand washing, as the virus is killed by soap, which bursts its protective bubble.Other recommendations include covering one’s mouth when coughing, maintaining distance from other people, and monitoring and self-isolation for people who suspect they are infected.</p>
       </div>
     </div>
+	<div id="mob_info">
+	<p>
+	The 2019–2020 coronavirus pandemic is an ongoing pandemic of coronavirus disease 2019 (COVID-19), caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2).The outbreak was first identified in Wuhan, Hubei, China, in December 2019, and was recognized as a pandemic by the World Health Organization (WHO) on 11 March 2020. As of 27 March, more than 550,000 cases of COVID-19 have been reported in over 200 countries and territories, resulting in approximately 24,800 deaths and more than 129,000 recoveries.
+	
+	The virus is mainly spread during close contact and via respiratory droplets produced when people cough or sneeze. Respiratory droplets may be produced during breathing but the virus is not considered airborne. People may also catch COVID-19 by touching a contaminated surface and then their faces. It is most contagious when people are symptomatic, although spread may be possible before symptoms appear.The time between exposure and symptom onset is typically around five days, but may range from 2 to 14 days.
+	
+	Common symptoms include fever, cough, and shortness of breath.Complications may include pneumonia and acute respiratory distress syndrome.There is no known vaccine or specific antiviral treatment.Primary treatment is symptomatic and supportive therapy.Recommended preventive measures include hand washing, as the virus is killed by soap, which bursts its protective bubble.Other recommendations include covering one’s mouth when coughing, maintaining distance from other people, and monitoring and self-isolation for people who suspect they are infected.
+	</p>
+	</div>
 	</td>
 	</table>
     </div>
@@ -539,7 +560,7 @@ table{
       <div id="collapse6" class="panel-collapse collapse">
         <div class="panel-body">
 		<p><img id="India_image" src = "india_cases.jpg" width="85%"/></p>
-		<p>Image: India Corona Virus Affected<a href="#" role="button" class="Moumita">View More</a></p>
+		<p>Image: India Corona Virus Affected<a href="#" role="button" id="Moumita">View More</a></p>
 		</div>
 		</div>
 		</div>
@@ -571,9 +592,9 @@ table{
       <div id="collapse3" class="panel-collapse collapse">
         <div class="panel-body">
 		<p><img id="WordCloud" src = "Word_Cloud.jpeg" width="85%"/></p>
-		<p>WordCloud Of Tweets</p>
+		<p>WordCloud Of Tweets <a href="#" role="button" id="wazib1">View More</a></p>
 		<p><img id="Polarity_Tweet" src = "Polarity_Of_Tweets.jpeg" width="85%"/></p>
-		<p>Polarity Of Tweets</p>
+		<p>Polarity Of Tweets <a href="#" role="button" id="wazib2">View More</a></p>
 		</div>
 		</div>
 		</div>
@@ -607,12 +628,12 @@ table{
 	   <h5>By Santu</h5>
 
 	   <h3>Covid-19 Pandemic: A review from Indian perspective</h3><!-- Trigger/Open The Modal -->
-        <a href="#" role="button" class="Moumita">View More</a>
+        <a href="#" role="button" id="Moumita_team">View More</a>
 	   <h4>Working upon  the SIR fitted by UMICH group by including foreign traffic & asymptotic/symptotic infection Getting data from national level & may   be a network models for state</h4>
 	   <h5>By Moumita Chatterjee</h5>
 	   
 	   <h3>India Dashboard</h3>
-	   <a href="#" role="button" id="Pooja">View More</a>
+	   <a href="#" role="button" id="Pooja_team">View More</a>
 	   <h4>Summarization of India & various state data.</h4>
 	   <h5>By Pooja Sengupta</h5>
 	   
@@ -620,9 +641,10 @@ table{
 	   <h4>Here we are adding country specific covariates & then using Bayesian structural time series model to get forecast for India</h4>
 	   <h5>By Arhit & Koustav</h5>
 	   
-	   <h3>Word Cloud</h3>
-	   <h4>Word Cloud for different county</h4>
-	   <h5>By Wazib</h5>
+	   <h3>Tweets Handling</h3>
+	   <a href="#" role="button" id="wazib_team">View More</a>
+	   <h4>Making wordcloud for Various Tweets & Determining Polarity etc.</h4>
+	   <h5>By Wazib Ansar</h5>
 	   
 	   <h3>COVID Challenge</h3>
 	   <h4>Presenting COVID Related challenge of the GOI</h4>
@@ -649,6 +671,8 @@ table{
       </iframe>
 	  <iframe id="myIframePooja" src="COVID19_India Details.pdf" width="100%";>
       </iframe>
+	  <iframe id="myIframeWazib" src="COVID19_TweetHandlings.pdf" width="100%";>
+      </iframe>
       </div>
       </div>
       <script>
@@ -657,6 +681,7 @@ table{
 <script>
    var iframe = document.getElementById("myIframeMoumita");
    var iframe1 = document.getElementById("myIframePooja");
+   var iframe2 = document.getElementById("myIframeWazib");
     // Adjusting the iframe height onload event
     iframe.onload = function(){
         iframe.style.height = (screen.height*3/5) + 'px';
@@ -665,30 +690,66 @@ table{
         iframe1.style.height = (screen.height*3/5) + 'px';
     }
 	
+	iframe2.onload = function(){
+        iframe2.style.height = (screen.height*3/5) + 'px';
+    }
+	
 // Get the modal
 var modal = document.getElementById("myModal");
 // Get the button that opens the modal
-var btn = document.getElementsByClassName("Moumita");
+var btn = document.getElementById("Moumita");
+var btn_moumita =document.getElementById("Moumita_team");
 var btn1 = document.getElementById("Pooja");
+var btn_pooja=document.getElementById("Pooja_team");
+var btn_wazib1=document.getElementById("wazib1");
+var btn_wazib2=document.getElementById("wazib2");
+var btn_wazib3=document.getElementById("wazib_team");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
-    
+showMoumita();
+}
+btn_moumita.onclick = function() {
+showMoumita();
+}
+btn1.onclick = function() {
+ showPooja();  
+}
+btn_pooja.onclick = function() {
+ showPooja();  
+}
+btn_wazib1.onclick = function() {
+showWazib();
+}
+btn_wazib2.onclick = function() {
+showWazib();
+}
+btn_wazib3.onclick = function() {
+showWazib();
+}
+function showMoumita()
+{
     modal.style.display = "block";
 	iframe.style.display="block"
 	iframe1.style.display="none"
-    // Selecting the iframe element
-    
+	iframe2.style.display="none"
 }
-btn1.onclick = function() {
-    
+function showPooja()
+{
     modal.style.display = "block";
 	iframe1.style.display="block"
 	iframe.style.display="none"
+	iframe2.style.display="none"
     // Selecting the iframe element
-    
+}
+function showWazib()
+{
+    modal.style.display = "block";
+	iframe1.style.display="none";
+	iframe.style.display="none";
+	iframe2.style.display = "block";
 }
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
@@ -708,8 +769,8 @@ window.onclick = function(event) {
     <footer>
       <div class="row" id="section-3">
         <div class="col-3">
-          <p><b>Calcutta University</b></br>
-            University of Calcutta</br>
+          <p><b>email us</b></br>
+            covid.pandemic20@gmail.com</br>
             
           </p>
         </div>
