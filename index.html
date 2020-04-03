@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 	
 	<script>
 	     
@@ -492,6 +493,16 @@ table{
     </div>
 	<table style="margin:0px;padding:4%">
 	<tr><td>
+	<div class="panel-group">
+	 
+	 <div class="panel panel-default">
+      <div class="panel-heading active">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse1">General Information</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+      <div class="panel-body">
     <div id="lappy_info" class="row" style="width:100%;padding-right:4%;padding-left:4%">
       <div class="col-3" style="width:33%">
         
@@ -515,7 +526,11 @@ table{
 	Common symptoms include fever, cough, and shortness of breath.Complications may include pneumonia and acute respiratory distress syndrome.There is no known vaccine or specific antiviral treatment.Primary treatment is symptomatic and supportive therapy.Recommended preventive measures include hand washing, as the virus is killed by soap, which bursts its protective bubble.Other recommendations include covering one’s mouth when coughing, maintaining distance from other people, and monitoring and self-isolation for people who suspect they are infected.
 	</p>
 	</div>
-	</td>
+	</div>
+	</div>
+	</div>
+	</div>
+	</td></tr>
 	</table>
     </div>
 	<div id="div2">
@@ -529,6 +544,10 @@ table{
         <div class="table-responsive">
 	   <div align="center">
          <button type="button" name="load_data" id="load_data" class="btn btn-info">Refresh</button>
+		 <a href="https://www.hitwebcounter.com" target="_blank">
+         <img src="https://hitwebcounter.com/counter/counter.php?page=7220605&style=0036&nbdigits=2&type=page&initCount=0" title="User Stats" Alt="PHP Hits Count"   border="0" >
+         </a>                                    
+           
        </div>
        <br />
 
@@ -655,6 +674,21 @@ table{
       </div>
 	   
 	  </div>
+	  <form method="POST" id="comment_form">
+    <div class="form-group">
+     <input type="text" name="comment_name" id="comment_name" class="form-control" placeholder="Enter Name" />
+    </div>
+    <div class="form-group">
+     <textarea name="comment_content" id="comment_content" class="form-control" placeholder="Enter Comment" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+     <input type="hidden" name="comment_id" id="comment_id" value="0" />
+     <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
+    </div>
+   </form>
+   <span id="comment_message"></span>
+   <br />
+    <div id="display_comment"></div>
 	  </div>
 	  
 	  <!-- The Modal -->
@@ -762,6 +796,52 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+</script>
+<script>
+$(document).ready(function(){
+ 
+ $('#comment_form').on('submit', function(event){
+  event.preventDefault();
+  var form_data = $(this).serialize();
+  $.ajax({
+   url:"FromCsv.php",
+   method:"POST",
+   data:form_data,
+   dataType:"JSON",
+   success:function(data)
+   {
+    if(data.error != '')
+    {
+     $('#comment_form')[0].reset();
+     $('#comment_message').html(data.error);
+     $('#comment_id').val('0');
+     load_comment();
+    }
+   }
+  })
+ });
+
+ load_comment();
+
+ function load_comment()
+ {
+  $.ajax({
+   url:"ToCsv.php",
+   method:"POST",
+   success:function(data)
+   {
+    $('#display_comment').html(data);
+   }
+  })
+ }
+
+ $(document).on('click', '.reply', function(){
+  var comment_id = $(this).attr("id");
+  $('#comment_id').val(comment_id);
+  $('#comment_name').focus();
+ });
+ 
+});
 </script>
       </div>
 	  
