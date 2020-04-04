@@ -1,877 +1,962 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Covid19</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/1.5.5/jquery.smooth-scroll.min.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<?php
+//index.php
 
-	
-	<script>
-	     
-  $(document).ready(function(){
-  $('#load_data').click();
-  var mob = document.getElementById('mob_info');
-  var lappy= document.getElementById('lappy_info');
-  if(screen.width > 1000)
-  { 
-     mob.style.display="none";
-	 lappy.style.display="block";
-    
-  }
-  else{
-     mob.style.display="block";
-	 lappy.style.display="none";
-  }
-  $('.panel-collapse').on('show.bs.collapse', function () {
-    $(this).siblings('.panel-heading').addClass('active');
-  });
+?>
+    <!DOCTYPE html>
+    <html>
 
-  $('.panel-collapse').on('hide.bs.collapse', function () {
-    $(this).siblings('.panel-heading').removeClass('active');
-  }); 
- $('#load_data').click(function(){
-  var imgObj = document.getElementById('Tourism_Revenue'); 
-  imgObj.src = "Tourism_Revenue.jpeg";
-  var imgObj1 = document.getElementById('WordCloud'); 
-  imgObj1.src = "Word_Cloud.jpeg";
-  var imgObj2 = document.getElementById('Average_AQI'); 
-  imgObj2.src = "Average_AQI.jpeg";
-  var imgObj3 = document.getElementById('Corelation_Analysis'); 
-  imgObj3.src = "Corelation_Analysis.jpeg";
-  var imgObj4 = document.getElementById('LineChart'); 
-  imgObj4.src = "Line_Chart_28days.jpeg";
-  var imgObj5 = document.getElementById('Polarity_Tweet'); 
-  imgObj5.src = "Polarity_Of_Tweets.jpeg";
-  var imgObj6 = document.getElementById('Stock_closing'); 
-  imgObj6.src = "Stock_Closing.jpeg";
-  var imgObj7 = document.getElementById('Total_confirmed'); 
-  imgObj7.src = "Total_Confirmed_cases.jpeg";
-  var imgObj8 = document.getElementById('India_confirmed'); 
-  imgObj8.src = "Confirmed_Cases.jpg";
-  var imgObj9 = document.getElementById('India_image'); 
-  imgObj9.src = "india_cases.jpg";
-  $.ajax({
-   url:"DataDetails.csv",
-   dataType:"text",
-   success:function(data)
-   {
-    var employee_data = data.split(/\r?\n|\r/);
-    var table_data = '<table class="table table-bordered table-striped">';
-    for(var count = 0; count<employee_data.length; count++)
-    {
-     var cell_data = employee_data[count].split(",");
-     table_data += '<tr>';
-     for(var cell_count=0; cell_count<cell_data.length; cell_count++)
-     {
-      if(count === 0)
-      {
-       table_data += '<th>'+cell_data[cell_count]+'</th>';
-      }
-      else
-      {
-       table_data += '<td>'+cell_data[cell_count]+'</td>';
-      }
-     }
-     table_data += '</tr>';
-    }
-    table_data += '</table>';
-    $('#employee_table').html(table_data);
-   }
-  });
- });
- 
-});
-function showhome() {
-  var a = document.getElementById("div1");
-  var b = document.getElementById("div2");
+    <head>
+        <title>Covid19</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/1.5.5/jquery.smooth-scroll.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-  
-    a.style.display = "block";
-    b.style.display = "none";
+        <script>
+            $(document).ready(function() {
+                $('#load_data').click();
+                var mob = document.getElementById('mob_info');
+                var lappy = document.getElementById('lappy_info');
+                var refreshP = document.getElementById('refreshP');
+                if (screen.width > 1000) {
+                    mob.style.display = "none";
+                    lappy.style.display = "block";
+                    refreshP.style.paddingLeft = "60%";
+                } else {
+                    mob.style.display = "block";
+                    lappy.style.display = "none";
+                    refreshP.style.paddingLeft = "8%";
+                }
+                $('.panel-collapse').on('show.bs.collapse', function() {
+                    $(this).siblings('.panel-heading').addClass('active');
+                });
 
-  
-};
-function showactivities() {
-  var a = document.getElementById("div1");
-  var b = document.getElementById("div2");
-  
-  
-    a.style.display = "none";
-    b.style.display = "block";
-	document.getElementById("load_data").click();
-    
-};
+                $('.panel-collapse').on('hide.bs.collapse', function() {
+                    $(this).siblings('.panel-heading').removeClass('active');
+                });
+                $('#load_data').click(function() {
+                   var a;
+                });
 
+            });
+			function photoGallery()
+			{
+				var a = document.getElementById("div1");
+                var b = document.getElementById("div2");
+				var c = document.getElementById("div3");
 
-	</script>
-	<style>
-	* {
-  box-sizing: border-box;
-}
+                c.style.display = "block";
+                b.style.display = "none";
+				a.style.display="none";
+				
+			};
 
-.row > .column {
-  padding: 0 8px;
-}
+            function showhome() {
+                var a = document.getElementById("div1");
+                var b = document.getElementById("div2");
+				var c = document.getElementById("div3");
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+                a.style.display = "block";
+                b.style.display = "none";
+				c.style.display="none";
 
-.column {
-  float: left;
-  width: 25%;
-}
+            };
 
-/* The Modal (background) */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 22vh;
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
+            function showactivities() {
+                var a = document.getElementById("div1");
+                var b = document.getElementById("div2");
+				var c = document.getElementById("div3");
 
-/* Modal Content */
-.modal-content {
-  position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  border: 1px solid #888;
-  width: 80%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s
-}
+                a.style.display = "none";
+                b.style.display = "block";
+				c.style.display="none";
+                document.getElementById("load_data").click();
 
-/* Add Animation */
-@-webkit-keyframes animatetop {
-  from {top:-300px; opacity:0} 
-  to {top:0; opacity:1}
-}
-
-@keyframes animatetop {
-  from {top:-300px; opacity:0}
-  to {top:0; opacity:1}
-}
-
-/* The Close Button */
-.close {
-  color: white;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.modal-header {
-  padding: 2px 16px;
-  background-color: gray
-  color: white;
-}
-
-.modal-body {padding: 2px 16px;}
-
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-img {
-  margin-bottom: -4px;
-}
-
-.caption-container {
-  text-align: center;
-  background-color: black;
-  padding: 2px 16px;
-  color: white;
-}
-
-.demo {
-  opacity: 0.6;
-}
-
-.active,
-.demo:hover {
-  opacity: 1;
-}
-
-img.hover-shadow {
-  transition: 0.3s;
-}
-
-.hover-shadow:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-	 	body {
-  background-color: #ECECEC;
-  color: #444444;
-  padding: 0;
-  margin: 0;
-  perspective: 1px;
-  transform-style: preserve-3d;
-  height: 100%;
-  overflow-x: hidden;
-  font-family: 'Roboto';
-}
-.left-underline {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -moz-osx-font-smoothing: grayscale;
-  position: relative;
-  overflow: hidden;
-}
-.left-underline:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: 0;
-  right: 100%;
-  bottom: 0;
-  background: #ECECEC;
-  height: 4px;
-  -webkit-transition-property: right;
-  transition-property: right;
-  -webkit-transition-duration: 0.15s;
-  transition-duration: 0.15s;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-}
-.left-underline:hover:before, .left-underline:focus:before, .left-underline:active:before {
-  right: 0;
-}
-div.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #ee6e73;
-  -webkit-box-shadow: 0px 2px 6px 0px rgba(50, 50, 50, 0.75);
-  -moz-box-shadow:    0px 2px 6px 0px rgba(50, 50, 50, 0.75);
-  box-shadow:         0px 2px 6px 0px rgba(50, 50, 50, 0.75);
-  z-index: 9999999;
-}
-div.navbar > ul.navbar-container {
-  list-style-type: none;
-  margin: 0;
-  padding-left: 1em;
-  padding-right: 1em;
-  overflow: hidden;
-}
-div.navbar > ul > li.nav-item {
-  float: right;
-  background-color: rgba(0, 0, 0, 0.1);
-  transition: all 0.5s ease;
-}
-div.navbar > ul > li.active {
-  background-color: rgba(0, 0, 0, 0.18);
-}
-div.navbar > ul > li:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-a.nav-button {
-  font-family: 'Roboto';
-  text-decoration: none;
-  line-height: 60px;
-  padding-left: 20px;
-  padding-right: 20px;
-  color: rgba(228, 241, 254, 1);
-  transition: all 0.5s ease;
-}
-a.nav-button:hover {
-  text-decoration: none;
-}
-li.active > a.nav-button {
-  cursor: default;
-}
-.brand-logo {
-  float: left;
-  cursor: default;
-}
-.parallax {
-  height: 35vh;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-}
-.parallax.p1 {
-  background-image: url("https://i.imgur.com/bpoSMSH.jpg");
-  background-repeat : no-repeat;
-  background-color: black;
-}
-.parallax.p2 {
-  background-image: url("https://i.imgur.com/bpoSMSH.jpg");
-  background-repeat : no-repeat;
-  background-color: black;
-}
-
-
-.parallax-text {
-  width: 24em;
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  border: .5em solid #fff;
-  margin-left: -10%;
-  padding: 2em 0;
-  text-align: center;
-  z-index: 999;
-}
-.parallax > div.blur-image {
-  position: relative;
-  width: 100%;
-  height: 100%;
-} 
-hgroup{
-  display: inline-block;
-  text-align: center;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  color: #fff;
-  border: 5px solid #fff;
-  padding: .5em 3em;
-  background-color: rgba(0,0,0,.5);
-  z-index: 2;
-}
-.row {
-  width: 80%;
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-top: 1.886%;
-  padding-bottom: 1.8%;
-  min-height: 18%;
-}
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.row > .col-3 {
-  width: 30%;
-  height: 100%;
-  box-sizing: border-box;
-  float: left;
-  padding-left: .6%;
-  padding-right: .6%;
-}
-footer {
-  width: 100%;
-  padding-top: 20px;
-  display: block;
-  background-color: #ee6e73;
-}
-.footer-copyright {
-  font-weight: 300;
-  overflow: hidden;
-  height: 50px;
-  line-height: 50px;
-  color: rgba(255, 255, 255, 0.8);
-  background-color: rgba(51, 51, 51, 0.08);
-}
-.container {
-  width: 85%;
-  padding: 0 1.5rem;
-  margin: 0 auto;
-  max-width: 1280px;
-}
-footer p {
-  border-left: 3px solid #ffcdd2;
-  padding-left: 15px;
-  text-indent: 20px;
-  color: #ececec;
-}
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  padding:1.8%;
-}
-table{
-  margin:9%;
-}
-
-.wrapper{
-  width:70%;
-}
-@media(max-width:992px){
- .wrapper{
-  width:100%;
-} 
-}
-.panel-heading {
-  padding: 0;
-	border:0;
-}
-.panel-title>a, .panel-title>a:active{
-	display:block;
-	padding:15px;
-  color:#555;
-  font-size:16px;
-  font-weight:bold;
-	text-transform:uppercase;
-	letter-spacing:1px;
-  word-spacing:3px;
-	text-decoration:none;
-}
-.panel-heading  a:before {
-   font-family: 'Glyphicons Halflings';
-   content: "\e114";
-   float: right;
-   transition: all 0.5s;
-}
-.panel-heading.active a:before {
-	-webkit-transform: rotate(180deg);
-	-moz-transform: rotate(180deg);
-	transform: rotate(180deg);
-} 
-
-
-/* Blank lines for ease and view */
-/* */
-	</style>
-
-  </head>
-  <body onload="showactivities();" style="font-size:15px">
-     
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-    <div class="navbar">
-      <ul class="navbar-container">
-	    <li class="nav-item"><a href="#" onclick="showhome()" class="left-underline nav-button" data-scroll>Information</a></li>
-        <li class="nav-item"><a href="#" onclick="showactivities()" class="left-underline nav-button" data-scroll>Research Works</a></li>
-        
-      </ul>
-    </div>
-	<div id="div1">
-    <div class="parallax p1">
-      <hgroup>
-         <h2>COVID-19</h2>
-         <h4>Information</h4>		 
-      </hgroup>
-    </div>
-	<table style="margin:0px;padding:4%">
-	<tr><td>
-	<div class="panel-group">
-	 
-	 <div class="panel panel-default">
-      <div class="panel-heading active">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" href="#collapse1">General Information</a>
-        </h4>
-      </div>
-      <div id="collapse1" class="panel-collapse collapse in">
-      <div class="panel-body">
-    <div id="lappy_info" class="row" style="width:100%;padding-right:4%;padding-left:4%">
-      <div class="col-3" style="width:33%">
-        
-        <p>The 2019–2020 coronavirus pandemic is an ongoing pandemic of coronavirus disease 2019 (COVID-19), caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2).The outbreak was first identified in Wuhan, Hubei, China, in December 2019, and was recognized as a pandemic by the World Health Organization (WHO) on 11 March 2020. As of 27 March, more than 550,000 cases of COVID-19 have been reported in over 200 countries and territories, resulting in approximately 24,800 deaths and more than 129,000 recoveries.</p>
-      </div>
-      <div class="col-3"  style="width:33%">
-       
-        <p>The virus is mainly spread during close contact and via respiratory droplets produced when people cough or sneeze. Respiratory droplets may be produced during breathing but the virus is not considered airborne. People may also catch COVID-19 by touching a contaminated surface and then their faces. It is most contagious when people are symptomatic, although spread may be possible before symptoms appear.The time between exposure and symptom onset is typically around five days, but may range from 2 to 14 days.</p>
-      </div>
-      <div class="col-3"  style="width:33%">
-        
-        <p>Common symptoms include fever, cough, and shortness of breath.Complications may include pneumonia and acute respiratory distress syndrome.There is no known vaccine or specific antiviral treatment.Primary treatment is symptomatic and supportive therapy.Recommended preventive measures include hand washing, as the virus is killed by soap, which bursts its protective bubble.Other recommendations include covering one’s mouth when coughing, maintaining distance from other people, and monitoring and self-isolation for people who suspect they are infected.</p>
-      </div>
-    </div>
-	<div id="mob_info">
-	<p>
-	The 2019–2020 coronavirus pandemic is an ongoing pandemic of coronavirus disease 2019 (COVID-19), caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2).The outbreak was first identified in Wuhan, Hubei, China, in December 2019, and was recognized as a pandemic by the World Health Organization (WHO) on 11 March 2020. As of 27 March, more than 550,000 cases of COVID-19 have been reported in over 200 countries and territories, resulting in approximately 24,800 deaths and more than 129,000 recoveries.
-	
-	The virus is mainly spread during close contact and via respiratory droplets produced when people cough or sneeze. Respiratory droplets may be produced during breathing but the virus is not considered airborne. People may also catch COVID-19 by touching a contaminated surface and then their faces. It is most contagious when people are symptomatic, although spread may be possible before symptoms appear.The time between exposure and symptom onset is typically around five days, but may range from 2 to 14 days.
-	
-	Common symptoms include fever, cough, and shortness of breath.Complications may include pneumonia and acute respiratory distress syndrome.There is no known vaccine or specific antiviral treatment.Primary treatment is symptomatic and supportive therapy.Recommended preventive measures include hand washing, as the virus is killed by soap, which bursts its protective bubble.Other recommendations include covering one’s mouth when coughing, maintaining distance from other people, and monitoring and self-isolation for people who suspect they are infected.
-	</p>
-	</div>
-	</div>
-	</div>
-	</div>
-	</div>
-	</td></tr>
-	</table>
-    </div>
-	<div id="div2">
-	<div class="parallax p2">
-      <hgroup>
-         <h2>COVID-19</h2>
-         <h4>Research Works</h4>		 
-      </hgroup>
-    </div>
-       <div class="container">
-        <div class="table-responsive">
-	   <div align="center">
-         <button type="button" name="load_data" id="load_data" class="btn btn-info">Refresh</button>
-		 <a href="https://www.hitwebcounter.com" target="_blank">
-         <img src="https://hitwebcounter.com/counter/counter.php?page=7220605&style=0036&nbdigits=2&type=page&initCount=0" title="User Stats" Alt="PHP Hits Count"   border="0" >
-         </a>                                    
-           
-       </div>
-       <br />
-
-     <div class="panel-group">
-	 
-	 <div class="panel panel-default">
-      <div class="panel-heading active">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" href="#collapse1">Total cases</a>
-        </h4>
-      </div>
-      <div id="collapse1" class="panel-collapse collapse in">
-        <div class="panel-body">
-		<p><img id="Total_confirmed" src = "Total_Confirmed_cases.jpeg" width="85%"/></p>
-		<p>Graph Of Total Confirmed Cases</p>
-		
-		<p><img id="India_confirmed" src = "Confirmed_Cases.jpg" width="85%"/></p>
-		<p>Graph Of Confirmed Cases in India <a href="#" role="button" id="Pooja">View More</a></p>
-		</div>
-		</div>
-		</div>
-		
-		<div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" href="#collapse6">Covid19 Pandemic: A review from Indian perspective </a>
-        </h4>
-      </div>
-      <div id="collapse6" class="panel-collapse collapse">
-        <div class="panel-body">
-		<p><img id="India_image" src = "india_cases.jpg" width="85%"/></p>
-		<p>Image: India Corona Virus Affected<a href="#" role="button" id="Moumita">View More</a></p>
-		</div>
-		</div>
-		</div>
-		
-		<div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" href="#collapse2">Different Sectors</a>
-        </h4>
-      </div>
-      <div id="collapse2" class="panel-collapse collapse">
-        <div class="panel-body">
-		<p><img id="Stock_closing" src = "Stock_Closing.jpeg" width="85%"/></p>
-		<p>Stock Closing Values</p>
-		<p><img id="Average_AQI" src = "Average_AQI.jpeg" width="85%"/></p>
-		<p>Average AQI Of Different Cities</p>
-		<p><img id="Tourism_Revenue" src = "Tourism_Revenue.jpeg" width="85%"/></p>
-		<p>Tourism Revenues</p>
-		</div>
-		</div>
-		</div>
-		
-		<div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" href="#collapse3">Tweet Details</a>
-        </h4>
-      </div>
-      <div id="collapse3" class="panel-collapse collapse">
-        <div class="panel-body">
-		<p><img id="WordCloud" src = "Word_Cloud.jpeg" width="85%"/></p>
-		<p>WordCloud Of Tweets <a href="#" role="button" id="wazib1">View More</a></p>
-		<p><img id="Polarity_Tweet" src = "Polarity_Of_Tweets.jpeg" width="85%"/></p>
-		<p>Polarity Of Tweets <a href="#" role="button" id="wazib2">View More</a></p>
-		</div>
-		</div>
-		</div>
-	 
-	 <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" href="#collapse4">Analysis First 28 days</a>
-        </h4>
-      </div>
-      <div id="collapse4" class="panel-collapse collapse">
-        <div class="panel-body">
-		<p><img id="Corelation_Analysis" src = "Corelation_Analysis.jpeg" width="85%"/></p>
-		<p>Corelation Analysis </p>
-		<p><img id="LineChart" src = "Line_Chart_28days.jpeg" width="85%"/></p>
-		<p>Graph For Visualization</p>
-		</div>
-		</div>
-		</div>
-		
-     <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" href="#collapse5">Team Details</a>
-        </h4>
-      </div>
-      <div id="collapse5" class="panel-collapse collapse">
-        <div class="panel-body">
-	   <h3>Country Specific Curves</h3>
-	   <h4>Here using Semiparametric Regression we are fitting country specific curves & studying differences between country specific changepoints.</h4>
-	   <h5>By Santu</h5>
-
-	   <h3>Covid-19 Pandemic: A review from Indian perspective</h3><!-- Trigger/Open The Modal -->
-        <a href="#" role="button" id="Moumita_team">View More</a>
-	   <h4>Working upon  the SIR fitted by UMICH group by including foreign traffic & asymptotic/symptotic infection Getting data from national level & may   be a network models for state</h4>
-	   <h5>By Moumita Chatterjee</h5>
-	   
-	   <h3>India Dashboard</h3>
-	   <a href="#" role="button" id="Pooja_team">View More</a>
-	   <h4>Summarization of India & various state data.</h4>
-	   <h5>By Pooja Sengupta</h5>
-	   
-	   <h3>Getting forecast for India</h3>
-	   <h4>Here we are adding country specific covariates & then using Bayesian structural time series model to get forecast for India</h4>
-	   <h5>By Arhit & Koustav</h5>
-	   
-	   <h3>Tweets Handling</h3>
-	   <a href="#" role="button" id="wazib_team">View More</a>
-	   <h4>Making wordcloud for Various Tweets & Determining Polarity etc.</h4>
-	   <h5>By Wazib Ansar</h5>
-	   
-	   <h3>COVID Challenge</h3>
-	   <h4>Presenting COVID Related challenge of the GOI</h4>
-	   <h5>By Saptarsi Goswami</h5>
-		</div>
-         </div>
-       </div>
-      </div>
-	   
-	  </div>
-	  <form method="POST" id="comment_form">
-    <div class="form-group">
-     <input type="text" name="comment_name" id="comment_name" class="form-control" placeholder="Enter Name" />
-    </div>
-    <div class="form-group">
-     <textarea name="comment_content" id="comment_content" class="form-control" placeholder="Enter Comment" rows="5"></textarea>
-    </div>
-    <div class="form-group">
-     <input type="hidden" name="comment_id" id="comment_id" value="0" />
-     <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
-    </div>
-   </form>
-   <span id="comment_message"></span>
-   <br />
-    <div id="display_comment"></div>
-	  </div>
-	  
-	  <!-- The Modal -->
-      <div id="myModal" class="modal">
-
-      <!-- Modal content -->
-      <div class="modal-content">
-      <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2>COVID 19 Details</h2>
-      </div>
-      <div class="modal-body">
-       <object id="myIframeMoumita" data="COVID19_Indian Perspective.pdf" type="application/pdf" width="100%";>
-      </object>
-	  <iframe id="myIframePooja" src="COVID19_India Details.pdf" width="100%";>
-      </iframe>
-	  <iframe id="myIframeWazib" src="COVID19_TweetHandlings.pdf" width="100%";>
-      </iframe>
-      </div>
-      </div>
-      <script>
-    
-</script>
-<script>
-   var iframe = document.getElementById("myIframeMoumita");
-   var iframe1 = document.getElementById("myIframePooja");
-   var iframe2 = document.getElementById("myIframeWazib");
-    // Adjusting the iframe height onload event
-    iframe.onload = function(){
-        iframe.height = (screen.height*3/5) + 'px';
-    }
-	iframe1.onload = function(){
-        iframe1.style.height = (screen.height*3/5) + 'px';
-    }
-	
-	iframe2.onload = function(){
-        iframe2.style.height = (screen.height*3/5) + 'px';
-    }
-	
-// Get the modal
-var modal = document.getElementById("myModal");
-// Get the button that opens the modal
-var btn = document.getElementById("Moumita");
-var btn_moumita =document.getElementById("Moumita_team");
-var btn1 = document.getElementById("Pooja");
-var btn_pooja=document.getElementById("Pooja_team");
-var btn_wazib1=document.getElementById("wazib1");
-var btn_wazib2=document.getElementById("wazib2");
-var btn_wazib3=document.getElementById("wazib_team");
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-showMoumita();
-}
-btn_moumita.onclick = function() {
-showMoumita();
-}
-btn1.onclick = function() {
- showPooja();  
-}
-btn_pooja.onclick = function() {
- showPooja();  
-}
-btn_wazib1.onclick = function() {
-showWazib();
-}
-btn_wazib2.onclick = function() {
-showWazib();
-}
-btn_wazib3.onclick = function() {
-showWazib();
-}
-function showMoumita()
-{
-    modal.style.display = "block";
-	iframe.style.display="block"
-	iframe1.style.display="none"
-	iframe2.style.display="none"
-}
-function showPooja()
-{
-    modal.style.display = "block";
-	iframe1.style.display="block"
-	iframe.style.display="none"
-	iframe2.style.display="none"
-    // Selecting the iframe element
-}
-function showWazib()
-{
-    modal.style.display = "block";
-	iframe1.style.display="none";
-	iframe.style.display="none";
-	iframe2.style.display = "block";
-}
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
-<script>
-$(document).ready(function(){
- 
- $('#comment_form').on('submit', function(event){
-  event.preventDefault();
-  var form_data = $(this).serialize();
-  $.ajax({
-   url:"FromCsv.php",
-   method:"POST",
-   data:form_data,
-   dataType:"JSON",
-   success:function(data)
-   {
-    if(data.error != '')
-    {
-     $('#comment_form')[0].reset();
-     $('#comment_message').html(data.error);
-     $('#comment_id').val('0');
-     load_comment();
-    }
-   }
-  })
- });
-
- load_comment();
-
- function load_comment()
- {
-  $.ajax({
-   url:"ToCsv.php",
-   method:"POST",
-   success:function(data)
-   {
-    $('#display_comment').html(data);
-   }
-  })
- }
-
- $(document).on('click', '.reply', function(){
-  var comment_id = $(this).attr("id");
-  $('#comment_id').val(comment_id);
-  $('#comment_name').focus();
- });
- 
-});
-</script>
-      </div>
-	  
-	  </div>
-    <footer>
-      <div class="row" id="section-3">
-        <div class="col-3">
-          <p>email_us</br>
-	      <b>covid.pandemic20@gmail.com</b></br>
+            };
+        </script>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
             
-          </p>
+            .row > .column {
+                padding: 0 8px;
+            }
+            
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            
+            .column {
+                float: left;
+                width: 25%;
+            }
+            /* The Modal (background) */
+            
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                padding-top: 22vh;
+                left: 0;
+                top: 0;
+                width: 100%;
+                /* Full width */
+                height: 100%;
+                /* Full height */
+                overflow: auto;
+                /* Enable scroll if needed */
+                background-color: rgb(0, 0, 0);
+                /* Fallback color */
+                background-color: rgba(0, 0, 0, 0.4);
+                /* Black w/ opacity */
+            }
+            /* Modal Content */
+            
+            .modal-content {
+                position: relative;
+                background-color: #fefefe;
+                margin: auto;
+                padding: 0;
+                border: 1px solid #888;
+                width: 80%;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                -webkit-animation-name: animatetop;
+                -webkit-animation-duration: 0.4s;
+                animation-name: animatetop;
+                animation-duration: 0.4s
+            }
+            /* Add Animation */
+            
+            @-webkit-keyframes animatetop {
+                from {
+                    top: -300px;
+                    opacity: 0
+                }
+                to {
+                    top: 0;
+                    opacity: 1
+                }
+            }
+            
+            @keyframes animatetop {
+                from {
+                    top: -300px;
+                    opacity: 0
+                }
+                to {
+                    top: 0;
+                    opacity: 1
+                }
+            }
+            /* The Close Button */
+            
+            .close {
+                color: white;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+            
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            
+            .modal-header {
+                padding: 2px 16px;
+                background-color: gray color: white;
+            }
+            
+            .modal-body {
+                padding: 2px 16px;
+            }
+            /* Position the "next button" to the right */
+            
+            .next {
+                right: 0;
+                border-radius: 3px 0 0 3px;
+            }
+            /* On hover, add a black background color with a little bit see-through */
+            
+            .prev:hover,
+            .next:hover {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+            /* Number text (1/3 etc) */
+            
+            .numbertext {
+                color: #f2f2f2;
+                font-size: 12px;
+                padding: 8px 12px;
+                position: absolute;
+                top: 0;
+            }
+            
+            img {
+                margin-bottom: -4px;
+            }
+            
+            .caption-container {
+                text-align: center;
+                background-color: black;
+                padding: 2px 16px;
+                color: white;
+            }
+            
+            .demo {
+                opacity: 0.6;
+            }
+            
+            .active,
+            .demo:hover {
+                opacity: 1;
+            }
+            
+            img.hover-shadow {
+                transition: 0.3s;
+            }
+            
+            .hover-shadow:hover {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            
+            body {
+                background-color: #ECECEC;
+                color: #444444;
+                padding: 0;
+                margin: 0;
+                perspective: 1px;
+                transform-style: preserve-3d;
+                height: 100%;
+                overflow-x: hidden;
+                font-family: 'Roboto';
+            }
+            
+            .left-underline {
+                display: inline-block;
+                vertical-align: middle;
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                -moz-osx-font-smoothing: grayscale;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .left-underline:before {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                left: 0;
+                right: 100%;
+                bottom: 0;
+                background: #ECECEC;
+                height: 4px;
+                -webkit-transition-property: right;
+                transition-property: right;
+                -webkit-transition-duration: 0.15s;
+                transition-duration: 0.15s;
+                -webkit-transition-timing-function: ease-out;
+                transition-timing-function: ease-out;
+            }
+            
+            .left-underline:hover:before,
+            .left-underline:focus:before,
+            .left-underline:active:before {
+                right: 0;
+            }
+            
+            div.navbar {
+                
+                top: 10%;
+                left: 0;
+                width: 100%;
+                background: #ee6e73;
+                -webkit-box-shadow: 0px 2px 6px 0px rgba(50, 50, 50, 0.75);
+                -moz-box-shadow: 0px 2px 6px 0px rgba(50, 50, 50, 0.75);
+                box-shadow: 0px 2px 6px 0px rgba(50, 50, 50, 0.75);
+                z-index: 9999999;
+            }
+            
+            div.navbar > ul.navbar-container {
+                list-style-type: none;
+                margin: 0;
+                padding-left: 1em;
+                padding-right: 1em;
+                overflow: hidden;
+            }
+            
+            div.navbar > ul > li.nav-item {
+                float: right;
+                background-color: rgba(0, 0, 0, 0.1);
+                transition: all 0.5s ease;
+            }
+            
+            div.navbar > ul > li.active {
+                background-color: rgba(0, 0, 0, 0.18);
+            }
+            
+            div.navbar > ul > li:hover {
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+            
+            a.nav-button {
+                font-family: 'Roboto';
+                text-decoration: none;
+                line-height: 60px;
+                padding-left: 20px;
+                padding-right: 20px;
+                color: rgba(228, 241, 254, 1);
+                transition: all 0.5s ease;
+            }
+            
+            a.nav-button:hover {
+                text-decoration: none;
+            }
+            
+            li.active > a.nav-button {
+                cursor: default;
+            }
+            
+            .brand-logo {
+                float: left;
+                cursor: default;
+            }
+            
+            .parallax {
+                height: 35vh;
+                overflow: hidden;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .parallax.p1 {
+                background-image: url("https://i.imgur.com/bpoSMSH.jpg");
+                background-repeat: no-repeat;
+                background-color: black;
+            }
+            
+            .parallax.p2 {
+                background-image: url("https://i.imgur.com/bpoSMSH.jpg");
+                background-repeat: no-repeat;
+                background-color: black;
+            }
+            
+            .parallax-text {
+                width: 24em;
+                position: fixed;
+                top: 20%;
+                left: 50%;
+                border: .5em solid #fff;
+                margin-left: -10%;
+                padding: 2em 0;
+                text-align: center;
+                z-index: 999;
+            }
+            
+            .parallax > div.blur-image {
+                position: relative;
+                width: 100%;
+                height: 100%;
+            }
+            
+            hgroup {
+                display: inline-block;
+                text-align: center;
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                color: #fff;
+                border: 5px solid #fff;
+                padding: .5em 3em;
+                background-color: rgba(0, 0, 0, .5);
+                z-index: 2;
+            }
+            
+            .row {
+                width: 80%;
+                padding-left: 10%;
+                padding-right: 10%;
+                padding-top: 1.886%;
+                padding-bottom: 1.8%;
+                min-height: 18%;
+            }
+            
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            
+            .row > .col-3 {
+                width: 30%;
+                height: 100%;
+                box-sizing: border-box;
+                float: left;
+                padding-left: .6%;
+                padding-right: .6%;
+            }
+            
+            footer {
+                width: 100%;
+                padding-top: 20px;
+                display: block;
+                background-color: #ee6e73;
+            }
+            
+            .footer-copyright {
+                font-weight: 300;
+                overflow: hidden;
+                height: 50px;
+                line-height: 50px;
+                color: rgba(255, 255, 255, 0.8);
+                background-color: rgba(51, 51, 51, 0.08);
+            }
+            
+            .container {
+                width: 85%;
+                padding: 0 1.5rem;
+                margin: 0 auto;
+                max-width: 1280px;
+            }
+            
+            footer p {
+                border-left: 3px solid #ffcdd2;
+                padding-left: 15px;
+                text-indent: 20px;
+                color: #ececec;
+            }
+            
+            table,
+            th,
+            td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 1.8%;
+            }
+            
+            table {
+                margin: 9%;
+            }
+            
+            .wrapper {
+                width: 70%;
+            }
+            
+            @media(max-width:992px) {
+                .wrapper {
+                    width: 100%;
+                }
+            }
+            
+            .panel-heading {
+                padding: 0;
+                border: 0;
+            }
+            
+            .panel-title>a,
+            .panel-title>a:active {
+                display: block;
+                padding: 15px;
+                color: #555;
+                font-size: 16px;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                word-spacing: 3px;
+                text-decoration: none;
+            }
+            
+            .panel-heading a:before {
+                font-family: 'Glyphicons Halflings';
+                content: "\e114";
+                float: right;
+                transition: all 0.5s;
+            }
+            
+            .panel-heading.active a:before {
+                -webkit-transform: rotate(180deg);
+                -moz-transform: rotate(180deg);
+                transform: rotate(180deg);
+            }
+            /* Blank lines for ease and view */
+            /* */
+        </style>
+
+    </head>
+
+    <body onload="showhome();" style="font-size:15px">
+        <div class="parallax p1">
+                <hgroup>
+                    <h2>COVID-19</h2>
+                </hgroup>
         </div>
-      </div>
-	  <table style="width:100%;border:0px;margin:0px;padding:0px">
-	  <tr>
-	  <td style="border:0px;margin:0px;padding:0px" >
-      <div class="footer-copyright">
-        <div class="container">
-          © CU 2019
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+        <div class="navbar">
+            <ul class="navbar-container">
+                
+                <li class="nav-item"><a href="#" onclick="showactivities()" class="left-underline nav-button" data-scroll>Projects</a></li>
+				<li class="nav-item"><a href="#" onclick="photoGallery()" class="left-underline nav-button" data-scroll>Who we are</a></li>
+				<li class="nav-item"><a href="#" onclick="showhome()" class="left-underline nav-button" data-scroll>Introduction</a></li>
+
+            </ul>
         </div>
-	   </div>
-	   </td>
-	   <td style="border:0px;margin:0px;padding:0px;">
-	   <div class="footer-copyright">
-        <div class="container" align="right">
-          By Chatterjee, S 
+        <div id="div1">
+            <p id="refreshP" style="margin-top: 4%"> Number Of Viewers:
+                <a href="https://www.hitwebcounter.com" target="_blank">
+                    <img src="https://hitwebcounter.com/counter/counter.php?page=7220605&style=0036&nbdigits=2&type=page&initCount=0" title="User Stats" Alt="PHP Hits Count" border="0">
+                </a>
+                <button style="margin-left:1%" type="button" name="load_data" id="load_data" class="btn btn-info">Refresh</button>
+            </p>
+            <div style="margin-top:4%" class="container">
+                <div class="table-responsive">
+                    <div class="panel-group">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading active">
+                                <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse11">Introduction</a>
+        </h4>
+                            </div>
+                            <div id="collapse11" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div id="lappy_info" class="row" style="width:100%;padding-right:4%;padding-left:4%">
+                                        <div class="col-3" style="width:33%">
+
+                                           <!-- <p>The 2019–2020 coronavirus pandemic is an ongoing pandemic of coronavirus disease 2019 (COVID-19), caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2).The outbreak was first identified in Wuhan, Hubei, China, in December 2019, and was recognized as a pandemic by the World Health Organization (WHO) on 11 March 2020. As of 27 March, more than 550,000 cases of COVID-19 have been reported in over 200 countries and territories, resulting in approximately 24,800 deaths and more than 129,000 recoveries.</p>-->
+                                        </div>
+                                        <div class="col-3" style="width:33%">
+
+                                             <!--<p>The virus is mainly spread during close contact and via respiratory droplets produced when people cough or sneeze. Respiratory droplets may be produced during breathing but the virus is not considered airborne. People may also catch COVID-19 by touching a contaminated surface and then their faces. It is most contagious when people are symptomatic, although spread may be possible before symptoms appear.The time between exposure and symptom onset is typically around five days, but may range from 2 to 14 days.</p>-->
+                                        </div>
+                                        <div class="col-3" style="width:33%">
+
+                                             <!--<p>Common symptoms include fever, cough, and shortness of breath.Complications may include pneumonia and acute respiratory distress syndrome.There is no known vaccine or specific antiviral treatment.Primary treatment is symptomatic and supportive therapy.Recommended preventive measures include hand washing, as the virus is killed by soap, which bursts its protective bubble.Other recommendations include covering one’s mouth when coughing, maintaining distance from other people, and monitoring and self-isolation for people who suspect they are infected.</p>-->
+                                        </div>
+                                    </div>
+                                    <div id="mob_info">
+                                         <!--<p>
+                                            The 2019–2020 coronavirus pandemic is an ongoing pandemic of coronavirus disease 2019 (COVID-19), caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2).The outbreak was first identified in Wuhan, Hubei, China, in December 2019, and was recognized as a pandemic by the World Health Organization (WHO) on 11 March 2020. As of 27 March, more than 550,000 cases of COVID-19 have been reported in over 200 countries and territories, resulting in approximately 24,800 deaths and more than 129,000 recoveries. The virus is mainly spread during close contact and via respiratory droplets produced when people cough or sneeze. Respiratory droplets may be produced during breathing but the virus is not considered airborne. People may also catch COVID-19 by touching a contaminated surface and then their faces. It is most contagious when people are symptomatic, although spread may be possible before symptoms appear.The time between exposure and symptom onset is typically around five days, but may range from 2 to 14 days. Common symptoms include fever, cough, and shortness of breath.Complications may include pneumonia and acute respiratory distress syndrome.There is no known vaccine or specific antiviral treatment.Primary treatment is symptomatic and supportive therapy.Recommended preventive measures include hand washing, as the virus is killed by soap, which bursts its protective bubble.Other recommendations include covering one’s mouth when coughing, maintaining distance from other people, and monitoring and self-isolation for people who suspect they are infected.
+                                        </p>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-	   </div>
-	   </td>
-	   </tr></table>
-    </footer>
-  </body>
-</html>
+        <div id="div2">
+            <div class="container">
+                <div class="table-responsive">
+                    <br />
+
+                    <div class="panel-group">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading active">
+                                <h4 class="panel-title">
+         <a data-toggle="collapse" href="#collapse1">A comparison of Indian states</a>
+        </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <!--<p><img id="Total_confirmed" src="../Total_Confirmed_cases.jpeg" width="85%" /></p>
+                                    <p>Graph Of Total Confirmed Cases</p>-->
+
+                                    <p><img id="India_confirmed" src="../Confirmed_Cases.jpg" width="85%" /></p>
+                                    <p>Graph Of Confirmed Cases in India <a href="#" role="button" id="Pooja">View More</a></p>
+
+                                    <p><img id="Daily_Confirmed" src="../Daily_Confirmed_Cases.jpg" width="85%" /></p>
+                                    <p>Daily Confirmed Cases in India <a href="#" role="button" id="Pooja2">View More</a></p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse6">Modelling the epidemic</a>
+        </h4>
+                            </div>
+                            <div id="collapse6" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p><img id="India_image" src="../india_cases.jpg" width="85%" /></p>
+                                    <p>Image: India Corona Virus Affected<a href="#" role="button" id="Moumita">View More</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse2">Country specific models</a>
+        </h4>
+                            </div>
+                            <div id="collapse2" class="../panel-collapse collapse">
+                                <div class="panel-body">
+                                    <!--<p><img id="Stock_closing" src="../Stock_Closing.jpeg" width="85%" /></p>
+                                    <p>Stock Closing Values</p>
+                                    <p><img id="Average_AQI" src="../Average_AQI.jpeg" width="85%" /></p>
+                                    <p>Average AQI Of Different Cities</p>
+                                    <p><img id="Tourism_Revenue" src="../Tourism_Revenue.jpeg" width="85%" /></p>
+                                    <p>Tourism Revenues</p>-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse3">How we reacted</a>
+        </h4>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p><img id="WordCloud" src="../Word_Cloud.jpeg" width="85%" /></p>
+                                    <p>WordCloud Of Tweets <a href="#" role="button" id="wazib1">View More</a></p>
+                                    <!--<p><img id="Polarity_Tweet" src="../Polarity_Of_Tweets.jpeg" width="85%" /></p>
+                                    <p>Polarity Of Tweets <a href="#" role="button" id="wazib2">View More</a></p>-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse4">Economic Consequences</a>
+        </h4>
+                            </div>
+                            <div id="collapse4" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                   <!-- <p><img id="Corelation_Analysis" src="../Corelation_Analysis.jpeg" width="85%" /></p>
+                                    <p>Corelation Analysis </p>
+                                    <p><img id="LineChart" src="../Line_Chart_28days.jpeg" width="85%" /></p>
+                                    <p>Graph For Visualization</p>-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse5">Dynamic Forecast</a>
+        </h4>
+                            </div>
+                            <div id="collapse5" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <!--<h3>Country Specific Curves</h3>
+                                    <h4>Here using Semiparametric Regression we are fitting country specific curves & studying differences between country specific changepoints.</h4>
+                                    <h5>By Santu</h5>
+
+                                    <h3>Covid-19 Pandemic: A review from Indian perspective</h3>
+                                    <!-- Trigger/Open The Modal 
+                                    <a href="#" role="button" id="Moumita_team">View More</a>
+                                    <h4>Working upon  the SIR fitted by UMICH group by including foreign traffic & asymptotic/symptotic infection Getting data from national level & may   be a network models for state</h4>
+                                    <h5>By Moumita Chatterjee</h5>
+
+                                    <h3>India Dashboard</h3>
+                                    <a href="#" role="button" id="Pooja_team">View More</a>
+                                    <h4>Summarization of India & various state data.</h4>
+                                    <h5>By Pooja Sengupta</h5>
+
+                                    <h3>Getting forecast for India</h3>
+                                    <h4>Here we are adding country specific covariates & then using Bayesian structural time series model to get forecast for India</h4>
+                                    <h5>By Arhit & Koustav</h5>
+
+                                    <h3>Tweets Handling</h3>
+                                    <a href="#" role="button" id="wazib_team">View More</a>
+                                    <h4>Making wordcloud for Various Tweets & Determining Polarity etc.</h4>
+                                    <h5>By Wazib Ansar</h5>
+
+                                    <h3>COVID Challenge</h3>
+                                    <h4>Presenting COVID Related challenge of the GOI</h4>
+                                    <h5>By Saptarsi Goswami</h5>-->
+                                </div>
+                            </div>
+                        </div>
+						<div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse7">India vs Other Countries</a>
+        </h4>
+                            </div>
+                            <div id="collapse7" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p><img id="India_vs_Europe" src="../Saptarshi_sir.jpg" width="85%" /></p>
+                                    <p>India vs European Countries daily Confirmed case</p> 
+                                    <p><a href="https://www.tutorialrepublic.com" role="button" id="Saptarshi" target="myFrame">Show More</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>COVID 19 Details</h2>
+                    </div>
+                    <div class="modal-body">
+                        <iframe id="myIframeMoumita" src="../COVID19_Indian Perspective.pdf" width="100%" ;>
+                        </iframe>
+                        <iframe id="myIframePooja" src="../COVID19_India Details.pdf" width="100%" ;>
+                        </iframe>
+                        <iframe id="myIframePooja2" src="../COVID-19.pdf" width="100%" ;>
+                        </iframe>
+                        <iframe id="myIframeWazib" src="../COVID19_TweetHandlings.pdf" width="100%" ;>
+                        </iframe>
+						<iframe id="myIframeSaptarshi" name="myFrame"></iframe>
+    
+                    </div>
+                </div>
+                <script>
+                    var iframe = document.getElementById("myIframeMoumita");
+                    var iframe1 = document.getElementById("myIframePooja");
+                    var iframe2 = document.getElementById("myIframeWazib");
+                    var iframe3 = document.getElementById("myIframePooja2");
+					var iframe4 = document.getElementById("myIframeSaptarshi");
+					
+                    // Adjusting the iframe height onload event
+                    iframe.onload = function() {
+                        iframe.height = (screen.height * 3 / 5) + 'px';
+                    }
+                    iframe1.onload = function() {
+                        iframe1.style.height = (screen.height * 3 / 5) + 'px';
+                    }
+
+                    iframe2.onload = function() {
+                        iframe2.style.height = (screen.height * 3 / 5) + 'px';
+                    }
+
+                    iframe3.onload = function() {
+                        iframe3.style.height = (screen.height * 3 / 5) + 'px';
+                    }
+					
+					iframe4.onload = function() {
+                        iframe4.style.height = (screen.height * 3 / 5) + 'px';
+                    }
+
+                    // Get the modal
+                    var modal = document.getElementById("myModal");
+                    // Get the button that opens the modal
+                    var btn = document.getElementById("Moumita");
+                    var btn_moumita = document.getElementById("Moumita_team");
+                    var btn1 = document.getElementById("Pooja");
+                    var btn_pooja = document.getElementById("Pooja_team");
+                    var btn_pooja2 = document.getElementById("Pooja2");
+                    var btn_wazib1 = document.getElementById("wazib1");
+                    var btn_wazib2 = document.getElementById("wazib2");
+                    var btn_wazib3 = document.getElementById("wazib_team");
+					var btn_Saptarshi= document.getElementById("Saptarshi");
+                    // Get the <span> element that closes the modal
+                    var span = document.getElementsByClassName("close")[0];
+
+                    // When the user clicks the button, open the modal 
+                    btn.onclick = function() {
+                        showMoumita();
+                    }
+                    btn_moumita.onclick = function() {
+                        showMoumita();
+                    }
+                    btn1.onclick = function() {
+                        showPooja();
+                    }
+                    btn_pooja.onclick = function() {
+                        showPooja();
+                    }
+                    btn_pooja2.onclick = function() {
+                        showPooja2();
+                    }
+                    btn_wazib1.onclick = function() {
+                        showWazib();
+                    }
+                    btn_wazib2.onclick = function() {
+                        showWazib();
+                    }
+                    btn_wazib3.onclick = function() {
+                        showWazib();
+                    }
+					
+					btn_Saptarshi.onclick = function() {
+						showSaptarshi();
+					}
+
+                    function showMoumita() {
+                        modal.style.display = "block";
+                        iframe.style.display = "block"
+                        iframe1.style.display = "none"
+                        iframe2.style.display = "none"
+                        iframe3.style.display = "none"
+						iframe4.style.display = "none"
+                    }
+
+                    function showPooja() {
+                        modal.style.display = "block";
+                        iframe1.style.display = "block"
+                        iframe.style.display = "none"
+                        iframe2.style.display = "none"
+                        iframe3.style.display = "none"
+						iframe4.style.display = "none"
+                            // Selecting the iframe element
+                    }
+
+                    function showPooja2() {
+                        modal.style.display = "block";
+                        iframe3.style.display = "block"
+                        iframe.style.display = "none"
+                        iframe2.style.display = "none"
+                        iframe1.style.display = "none"
+						iframe4.style.display = "none"
+                            // Selecting the iframe element
+                    }
+
+                    function showWazib() {
+                        modal.style.display = "block";
+                        iframe1.style.display = "none";
+                        iframe.style.display = "none";
+                        iframe2.style.display = "block";
+                        iframe3.style.display = "none"
+						iframe4.style.display = "none"
+                    }
+					
+					function showSaptarshi(){
+						modal.style.display = "block";
+                        iframe1.style.display = "none";
+                        iframe.style.display = "none";
+                        iframe2.style.display = "none";
+                        iframe3.style.display = "none"
+						iframe4.style.display = "block"
+					}
+                    // When the user clicks on <span> (x), close the modal
+                    span.onclick = function() {
+                        modal.style.display = "none";
+                    }
+
+                    // When the user clicks anywhere outside of the modal, close it
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                </script>
+                <script>
+                    $(document).ready(function() {
+
+                        $('#comment_form').on('submit', function(event) {
+                            event.preventDefault();
+                            var form_data = $(this).serialize();
+                            $.ajax({
+                                url: "../FromCsv.php",
+                                method: "POST",
+                                data: form_data,
+                                dataType: "JSON",
+                                success: function(data) {
+                                    if (data.error != '') {
+                                        $('#comment_form')[0].reset();
+                                        $('#comment_message').html(data.error);
+                                        $('#comment_id').val('0');
+                                        load_comment();
+                                    }
+                                }
+                            })
+                        });
+
+                        load_comment();
+
+                        function load_comment() {
+                            $.ajax({
+                                url: "../ToCsv.php",
+                                method: "POST",
+                                success: function(data) {
+                                    $('#display_comment').html(data);
+                                }
+                            })
+                        }
+
+                        $(document).on('click', '.reply', function() {
+                            var comment_id = $(this).attr("id");
+                            $('#comment_id').val(comment_id);
+                            $('#comment_name').focus();
+                        });
+
+                    });
+                </script>
+            </div>
+
+        </div>
+        <div id="div3">
+		  Who we are
+		</div>
+		<div class= "container">
+		    <table frame="box" style="width:95%; margin:2.5%">
+                    <tr>
+                        <td>
+                            <form method="POST" id="comment_form">
+                                <div class="form-group">
+                                    <input type="text" name="comment_name" id="comment_name" class="form-control" placeholder="Enter Name" />
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="comment_content" id="comment_content" class="form-control" placeholder="Enter Comment" rows="5"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="comment_id" id="comment_id" value="0" />
+                                    <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
+                                </div>
+                            </form>
+                            <span id="comment_message"></span>
+                            <br />
+                            <div id="display_comment"></div>
+                        </td>
+                    </tr>
+            </table>
+		</div>
+		<footer>
+            <div class="row" id="section-3">
+                <div class="col-3">
+                    <p>email_us</br>
+                        <b>covid.pandemic20@gmail.com</b></br>
+
+                    </p>
+                </div>
+            </div>
+            <table style="width:100%;border:0px;margin:0px;padding:0px">
+                <tr>
+                    <td style="border:0px;margin:0px;padding:0px">
+                        <div class="footer-copyright">
+                            <div class="container">
+                                © CU 2020
+                            </div>
+                        </div>
+                    </td>
+                    <td style="border:0px;margin:0px;padding:0px;">
+                        <div class="footer-copyright">
+                            <div class="container" align="right">
+                                By Chatterjee, Sourya
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </footer>
+    </body>
+
+    </html>
